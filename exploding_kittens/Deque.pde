@@ -1,130 +1,127 @@
-public class Deque{
-    
-    private String[] deck;
-    private int front;
-    private int back;
+public class Deque {
 
-    public Deque() {
-  deck = new String[10];
-    }
+  private Card[] deck;
+  private int front;
+  private int back;
 
-    public void addFirst(String s) {
-  if (s.equals(null)) {
+  public Deque() {
+    deck = new Card[10];
+  }
+
+  public void addFirst(Card s) {
+    if (s.equals(null)) {
       throw new NullPointerException();
-  }
-  if (isFull()) {
+    }
+    if (isFull()) {
       resize();
-  }
-        front --;
-  if (front < 0) {
+    }
+    front --;
+    if (front < 0) {
       front = deck.length - 1;
-        }
-  deck[front] = s;
     }
+    deck[front] = s;
+  }
 
-    public void addLast(String s) {
-  if (s.equals(null)) {
+  public void addLast(Card s) {
+    if (s.equals(null)) {
       throw new NullPointerException();
-  }
-  if (isFull()) {
+    }
+    if (isFull()) {
       resize();
-  }
-        deck[back] = s;
-  back ++;
-  if (back == deck.length) {
+    }
+    deck[back] = s;
+    back ++;
+    if (back == deck.length) {
       back = 0;
-  }
     }
-
-    public String removeFirst() {
-  if (isEmpty()) {
-      throw new NoSuchElementException();
   }
-  String ret = deck[front];
-  deck[front] = null;
-  if (front < deck.length - 1) {
+
+  public Card removeFirst() {
+    if (isEmpty()) {
+      return null;
+    }
+    Card ret = deck[front];
+    deck[front] = null;
+    if (front < deck.length - 1) {
       front += 1;
-  }
-  else {
+    } else {
       front = 0;
-  }
-  return ret;
     }
-
-    public String removeLast() {
-  if (isEmpty()) {
-      throw new NoSuchElementException();
+    return ret;
   }
-  String ret;
-  if (back > 0) {
+
+  public Card removeLast() {
+    if (isEmpty()) {
+      return null;
+    }
+    Card ret;
+    if (back > 0) {
       ret = deck[back - 1];
       back -= 1;
-  }
-  else {
+    } else {
       ret = deck[0];
       back = deck.length - 1;
-  }
-  deck[back] = null;
-  return ret;
     }
-
-    public String getFirst() {
-  if (isEmpty()) {
-      throw new NoSuchElementException();
+    deck[back] = null;
+    return ret;
   }
-  return deck[front];
-    }
 
-    public String getLast() {
-  if (isEmpty()) {
-      throw new NoSuchElementException();
+  public Card getFirst() {
+    if (isEmpty()) {
+      return null;
+    }
+    return deck[front];
   }
-  return deck[back];
-    }
 
-    private void resize() {
-  String[] newDeck = new String[deck.length * 2 + 1];
-  int i = 0;
-  int f = front;
-  while (i < deck.length) {
+  public Card getLast() {
+    if (isEmpty()) {
+      return null;
+    }
+    return deck[back];
+  }
+
+  private void resize() {
+    Card[] newDeck = new Card[deck.length * 2 + 1];
+    int i = 0;
+    int f = front;
+    while (i < deck.length) {
       if (f == deck.length) {
-    f = 0;
+        f = 0;
       }
       newDeck[i] = deck[f];
-      f ++;
+      f++;
       i++;
-  }
-  front = 0;
-  back = deck.length;
-  deck = newDeck;
     }
-    
-    private boolean isFull() {
-  for (int i = 0; i < deck.length; i ++) {
+    front = 0;
+    back = deck.length;
+    deck = newDeck;
+  }
+
+  private boolean isFull() {
+    for (int i = 0; i < deck.length; i ++) {
       if (deck[i] == null) {
-    return false;
+        return false;
       }
-  }
-  return true;
     }
-    
-    private boolean isEmpty() {
-  for (int i = 0; i < deck.length; i ++) {
+    return true;
+  }
+
+  private boolean isEmpty() {
+    for (int i = 0; i < deck.length; i ++) {
       if (deck[i] != null) {
-    return false;
+        return false;
       }
-  }
-  return true;
     }
+    return true;
+  }
 
-    public String toString() {
-  String s = "[";
-  for (int i = 0; i < deck.length; i ++) {
-      s += deck[i];
+  public String toString() {
+    String s = "[";
+    for (int i = 0; i < deck.length; i ++) {
+      s += deck[i].getName();
       s += ", ";
-  }
-  s += "]";
-  return s;
     }
-
+    s += "]";
+    return s;
+  }
 }
