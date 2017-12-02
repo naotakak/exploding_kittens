@@ -14,4 +14,5 @@ class Card  {
   String getName() {
     return name;
   }
+  
 }
