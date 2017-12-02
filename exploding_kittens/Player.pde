@@ -40,8 +40,9 @@ class Player {
     if (hand[cardNum] = null) {
       return null;
     }
-    int temp = hand[cardNum].getID();
-    return hand[cardNum];
+    Card temp = hand[cardNum];
+    hand[cardNum] = null;
+    return temp;
   }
   
 }
