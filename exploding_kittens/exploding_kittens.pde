@@ -1,6 +1,6 @@
 import java.util.Deque;
 
-//interface Deque<Card>;
+Deque deck = new Deque();
  boolean start = true;
  PImage photo;
  int turn, numPlayers;
