@@ -3,6 +3,7 @@ class Player {
   Card hand[];
   String name;
   int playerNum;
+  boolean turn;
   
   Player() {
     Card[] hand = new Card[20];
@@ -33,7 +34,7 @@ class Player {
   }
   
   void endTurn() {
-    
+    turn = false;
   }
   
   Card play(int cardNum) {
