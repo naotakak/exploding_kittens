@@ -16,8 +16,16 @@ class Player {
     playerNum = newNum;
   }
   
-  void draw() {
-    
+  void drawCard() {
+    Card temp = deck.removeFirst();
+    int counter = 0
+    while (temp != null) {
+      if (hand[counter] = null) {
+       hand[counter] = temp;
+       temp = null;
+      }
+      counter += 1;
+    }
   }
   
   void choose() {
@@ -26,6 +34,14 @@ class Player {
   
   void endTurn() {
     
+  }
+  
+  Card play(int cardNum) {
+    if (hand[cardNum] = null) {
+      return null;
+    }
+    int temp = hand[cardNum].getID();
+    return hand[cardNum];
   }
   
 }
