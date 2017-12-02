@@ -72,7 +72,7 @@ class Player {
     ***/
     
     //check if card can be played
-    Card[2] ret;
+    Card[] ret = new Card[2];
     ret[1] = hand[card1];
     ret[2] = hand[card2];
     hand[card1] = null;
